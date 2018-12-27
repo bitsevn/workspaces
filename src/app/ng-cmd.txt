@@ -1,0 +1,25 @@
+# generate a root store module for the app (all feature store modules will register this module which in turn
+# registers to app.module.ts). This keeps code well organized
+
+ng g module root-store --flat false --module app.module.ts
+
+# generate a feature store module and register it to the root-store module
+
+ng g module root-store/layouts-store --flat false --module root-store/root-store.module.ts
+
+# generate a feature module and register it to corresponding ngrx store module
+
+ng g module features/layouts --flat false --module root-store/layouts-store/layouts-store.module.ts
+
+# generate ngrx feature (actions, effects, reducers) & register it to a module
+ng g feature root-store/layouts-store/layouts --module root-store/layouts-store/layouts-store.module.ts --group
+
+# generate component
+ng g c features/layouts/layout --flat true --styleext=scss
+
+
+examples:
+ng g module root-store/user-prefs-store --flat false --module root-store/root-store.module.ts
+ng g module features/user-prefs --flat false --module root-store/user-prefs-store/user-prefs-store.module.ts
+ng g feature root-store/user-prefs-store/user-prefs --module root-store/user-prefs-store/user-prefs-store.module.ts --group
+ng g c features/user-prefs/user-pref --flat true --styleext=scss
