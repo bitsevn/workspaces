@@ -9,6 +9,8 @@ import { SearchCriteriaModule } from "./search-criteria/search-criteria.module";
 import { TimePeriodsModule } from "./time-periods/time-periods.module";
 import { UserPrefsModule } from "./user-prefs/user-prefs.module";
 import { WorkspacesModule } from "./workspaces/workspaces.module";
+import { NavigationModule } from "./navigation/navigation.module";
+import { DashboardModule } from "./dashboard/dashboard.module";
 
 const featuresModules = [
   BookmarkFoldersModule,
@@ -19,7 +21,9 @@ const featuresModules = [
   SearchCriteriaModule,
   TimePeriodsModule,
   UserPrefsModule,
-  WorkspacesModule
+  WorkspacesModule,
+  NavigationModule,
+  DashboardModule
 ];
 
 @NgModule({

@@ -7,8 +7,11 @@ import { IFundState } from "../states/funds/funds.interface";
 import { IIndexState } from "../states/indices/indices.interface";
 import { ITimePeriodState } from "../states/time-periods/time-periods.interface";
 import { ISearchCriteriaState } from "../states/search-criteria/search-criteria.interface";
+import { IRouterStateUrl } from "./router.interface";
+import { RouterReducerState } from "@ngrx/router-store";
 
 export interface IStore {
+  router: RouterReducerState<IRouterStateUrl>; // Do Not change this key and value pair. Needed for time travel debugging.
   userPrefs: IUserPreferenceState;
   layouts: ILayoutsState;
   workspaces: IWorkspacesState;

@@ -1,3 +1,5 @@
+import { Injectable } from "@angular/core";
+import { RouterStateSnapshot } from "@angular/router";
 import {
   ActionReducer,
   ActionReducerMap,
@@ -5,6 +7,12 @@ import {
   createSelector,
   MetaReducer
 } from "@ngrx/store";
+import {
+  RouterStateSerializer,
+  routerReducer,
+  RouterReducerState
+} from "@ngrx/router-store";
+import { storeFreeze } from "ngrx-store-freeze";
 import { environment } from "../../environments/environment";
 import { IStore } from "./interfaces/store.interface";
 
@@ -17,8 +25,10 @@ import * as fromFunds from "../shared/states/funds/funds.reducer";
 import * as fromIndices from "../shared/states/indices/indices.reducer";
 import * as fromTimePeriods from "../shared/states/time-periods/time-periods.reducer";
 import * as fromSearchCriteria from "../shared/states/search-criteria/search-criteria.reducer";
+import { IRouterStateUrl } from "./interfaces/router.interface";
 
 export const reducers: ActionReducerMap<IStore> = {
+  router: routerReducer, // Do Not change this key and value pair. Needed for time travel debugging.
   userPrefs: fromUserPrefs.reducer,
   layouts: fromLayouts.reducer,
   workspaces: fromWorkspaces.reducer,
@@ -31,5 +41,39 @@ export const reducers: ActionReducerMap<IStore> = {
 };
 
 export const metaReducers: MetaReducer<IStore>[] = !environment.production
-  ? []
+  ? [storeFreeze]
   : [];
+
+@Injectable()
+export class CustomRouterStateSerializer extends RouterStateSerializer<
+  IRouterStateUrl
+> {
+  serialize(routerState: RouterStateSnapshot): IRouterStateUrl {
+    let route = routerState.root;
+
+    while (route.firstChild) {
+      route = route.firstChild;
+    }
+
+    const {
+      url,
+      root: { queryParams }
+    } = routerState;
+    const { params } = route;
+
+    // Only return an object including the URL, params and query params
+    // instead of the entire snapshot
+    return { url, params, queryParams };
+  }
+}
+
+// fetches you the router state object
+export const routerState = createFeatureSelector<
+  RouterReducerState<IRouterStateUrl>
+>("router");
+
+// gets you info about current route
+export const getRouterInfo = createSelector(
+  routerState,
+  state => state.state
+);

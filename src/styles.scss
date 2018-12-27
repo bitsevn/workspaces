@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+.presentation,
+.sidebar,
+.main {
+  height: 100%;
+}
+
+.sidebar {
+  background-color: #cfcfcf;
+  height: 100%;
+  width: 40px;
+  position: fixed;
+  z-index: 1;
+  top: 55;
+  left: 0;
+  //background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+  margin-left: 40px;
+}
+
+.nav-item,
+.list-group-item {
+  cursor: pointer;
+}
+
+.list-group-item {
+  padding: 0.1rem 0.5rem;
+  font-size: 12px;
+}
+
+.list-group-item.header {
+  background-color: #343a40 !important;
+  border-color: #343a40 !important;
+  color: #fff;
+  cursor: default;
+}
