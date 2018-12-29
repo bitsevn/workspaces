@@ -1,5 +1,53 @@
-Style guides for the project that every developers must adhere to
+** Style guides for the project that every developers must adhere to **
 
+[Readable Code]
+Why code readability matters?
+What does a software developer do? Writes code? Really?
+Job of a software developer: Writing code or Reading code?
+Activity & Time ratio ->
+Development :   Maintainance
+1           :   10
+Writing     :   Reading
+
+Development Vs. Maintainance [1:10]
+
+Writing Vs. Reading [1:10]
+
+What you write today will be read by others some day and vice versa
+(Karma bites back)
+
+Code Guidelines | Design Guidelines | Tool Guidelines
+
+** Code Guidelines **
+
+- Clean code
+- Refactoring (write dirty code - then clean it). Use tools.
+- Comment wisely
+- Verbose code (one thing per file, max lines per file, max lines per method)
+- Conventions (naming, structuring, folder)
+- Inside a typescript file
+  - imports
+  - props (input/output, local)
+  - constructor
+  - implemented methods
+  - local methods
+  - modifying a file (place new pieces of code where it belongs - follow above guidelines)
+- Feature modules
+- Start using index.js file to export all files within one group
+
+** Design Guidelines **
+
+- Component Driven Development ~ Reusability
+- Container Vs. Presentational Components | Smart Vs. Dumb Components
+- Single Responsibility Principles
+
+** Tool Guidelines **
+
+- Use standard formatting within the team. This helps keeping code format consistant and readable
+- Auto code formatting: start using Prettier
+- Organize auto imports on save
+
+----------------------------------------------------------------------------------------------
 1. Formatting: Install Prettier for auto code formatting
 2. Clean code: Follow below guide lines for writing code and re-factoring
   2.1) Single Responsibility Principle (SRP) - do one thing per file
@@ -50,3 +98,6 @@ Style guides for the project that every developers must adhere to
 3. Design Guidelines:
   3.1) Follow Component Driven Development
   3.2) Use Presentational Vs. Container Components
+4. Cli Usage Guidelines:
+  4.1) Set default selector prefix in angular.json and tslint.json files or use --prefix while cli commands
+    Ex: default is 'app'. You can set it to i.e. 'vs' -> 'vs-counter'
