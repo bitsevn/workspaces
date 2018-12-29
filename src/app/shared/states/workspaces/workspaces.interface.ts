@@ -1,4 +1,4 @@
-import { EntityState } from "@ngrx/entity";
+import { EntityState } from '@ngrx/entity';
 
 export enum WorkspaceType {
   PERSONAL = 0,

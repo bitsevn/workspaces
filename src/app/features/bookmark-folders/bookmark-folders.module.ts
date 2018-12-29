@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { BookmarkFolderComponent } from "./bookmark-folder.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BookmarkFolderComponent } from './bookmark-folder.component';
 
 @NgModule({
   declarations: [BookmarkFolderComponent],

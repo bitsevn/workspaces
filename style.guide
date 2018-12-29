@@ -1,0 +1,52 @@
+Style guides for the project that every developers must adhere to
+
+1. Formatting: Install Prettier for auto code formatting
+2. Clean code: Follow below guide lines for writing code and re-factoring
+  2.1) Single Responsibility Principle (SRP) - do one thing per file
+  2.2) Not more that 400 lines of code in a file
+  2.3) Not more than 20 lines of code per method
+  2.4) Imports:
+      2.4.1) Angular imports on the top
+      2.4.2) Then library imports
+      2.4.3) Then local imports
+      2.4.4) Club imports from same file within curly braces
+      2.4.5) Enable auto save and auto organize imports in VS Code. This also removes unused imports. This is one of my favourites.
+      2.4.6) Apply user.settings.json setting to your workspace/user setting
+  2.5) Naming Conventions:
+      2.5.1) File names: follow [feature.type.ts] pattern for naming the files
+            Examples:
+            model: client.interface.ts
+            component: client.component.ts
+            template: client.component.html
+            styles: client.component.scss
+            spec: client.component.spec.ts
+            service: client.service.ts
+            actions: clients.action.ts
+            reducers: clients.reducer.ts
+            effects: clients.effects.ts
+            modules: clients.module.ts
+
+            Note: if a feature has more than one words in names then file name should be seperated by hyphen
+            ex: client-list.component.ts
+
+      2.5.2) Class|Interface names:
+            Examples:
+            ClientListComponent
+            ClientComponent
+            ClientsModule
+            ClientService
+            ClientActions
+            ClientEffects
+
+      2.5.3) Interface:
+            Interface names should use 'I' as prefix
+            Ex: IClient, IWorkspace, IAppState
+  2.6) Directory|Folder structures:
+      Follow the structures listed in dir.PNG file
+  2.7) Code inside Angular Component:
+      Define below elements within your code in orderly fashion
+      - imports: angular core, libraries, local code
+      - inside component: inputs/outputs (together) -> custom props -> constructor -> interface methods -> custom methods
+3. Design Guidelines:
+  3.1) Follow Component Driven Development
+  3.2) Use Presentational Vs. Container Components

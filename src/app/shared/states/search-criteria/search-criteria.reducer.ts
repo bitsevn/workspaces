@@ -1,17 +1,11 @@
-import {
-  SearchCriteriaActions,
-  SearchCriteriaActionTypes
-} from "./search-criteria.actions";
-import { ISearchCriteriaState } from "./search-criteria.interface";
+import { SearchCriteriaActions, SearchCriteriaActionTypes } from './search-criteria.actions';
+import { ISearchCriteriaState } from './search-criteria.interface';
 
 export const initialState: ISearchCriteriaState = {
-  userId: "arunku@ms.com"
+  userId: 'arunku@ms.com'
 };
 
-export function reducer(
-  state = initialState,
-  action: SearchCriteriaActions
-): ISearchCriteriaState {
+export function reducer(state = initialState, action: SearchCriteriaActions): ISearchCriteriaState {
   switch (action.type) {
     case SearchCriteriaActionTypes.BOOKMARK_CHANGED: {
       return {

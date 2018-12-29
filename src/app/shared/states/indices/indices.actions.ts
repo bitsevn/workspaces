@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum IndicesActionTypes {
-  INDICES_LOADED = "[Indices] Indices Loaded"
+  INDICES_LOADED = '[Indices] Indices Loaded'
 }
 
 export class IndicesLoadedAction implements Action {

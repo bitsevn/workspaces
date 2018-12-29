@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum LayoutsActionTypes {
-  LAYOUTS_LOADED = "[Layouts] Layouts Loaded"
+  LAYOUTS_LOADED = '[Layouts] Layouts Loaded'
 }
 
 export class LayoutsLoadedAction implements Action {

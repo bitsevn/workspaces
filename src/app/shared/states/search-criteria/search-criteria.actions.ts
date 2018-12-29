@@ -1,11 +1,11 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum SearchCriteriaActionTypes {
-  BOOKMARK_CHANGED = "[SearchCriteria] SearchCriterias Bookmark Changed",
-  INDEX_CHANGED = "[SearchCriteria] SearchCriterias Index Changed",
-  CLIENT_CHANGED = "[SearchCriteria] SearchCriterias Client Changed",
-  TIME_PERIOD_CHANGED = "[SearchCriteria] SearchCriterias Time Period Changed",
-  DATES_CHANGED = "[SearchCriteria] SearchCriterias Date Range Changed"
+  BOOKMARK_CHANGED = '[SearchCriteria] SearchCriterias Bookmark Changed',
+  INDEX_CHANGED = '[SearchCriteria] SearchCriterias Index Changed',
+  CLIENT_CHANGED = '[SearchCriteria] SearchCriterias Client Changed',
+  TIME_PERIOD_CHANGED = '[SearchCriteria] SearchCriterias Time Period Changed',
+  DATES_CHANGED = '[SearchCriteria] SearchCriterias Date Range Changed'
 }
 
 export class BookmarkChangedAction implements Action {

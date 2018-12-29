@@ -24,12 +24,56 @@
   margin-left: 40px;
 }
 
-.nav-item,
-.list-group-item {
-  cursor: pointer;
+.sub-navbar {
+  background-color: #191a1b;
+  height: 32px;
 }
 
-.list-group-item {
+.sub-navbar-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sub-nav-item {
+  float: left;
+  padding: 0.2rem 0.2rem;
+}
+
+.sub-nav-item a {
+  display: block;
+  padding: 0.1rem 0.5rem;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.sub-nav-item-field span {
+  margin-right: 0.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.btn-sub-nav {
+  padding: 0.1rem 0.3rem;
+  font-size: 0.7rem;
+  line-height: 1.1;
+  border-radius: 0.1rem;
+}
+/* bootstrap overrides */
+
+.navbar {
+  padding: 0.15rem 0.75rem;
+}
+
+.navbar-brand {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.nav-item,
+.list-group-item,
+.dropdown-item {
+  cursor: pointer;
   padding: 0.1rem 0.5rem;
   font-size: 12px;
 }
@@ -39,4 +83,13 @@
   border-color: #343a40 !important;
   color: #fff;
   cursor: default;
+}
+
+.dropdown-menu {
+  padding: 0.2rem 0;
+  font-size: 0.75rem;
+}
+
+.dropdown-menu-item {
+  padding: 0.1rem 0.75rem;
 }

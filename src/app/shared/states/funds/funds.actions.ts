@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum FundsActionTypes {
-  FUNDS_LOADED = "[Funds] Funds Loaded"
+  FUNDS_LOADED = '[Funds] Funds Loaded'
 }
 
 export class FundsLoadedAction implements Action {

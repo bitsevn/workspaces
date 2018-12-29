@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum UserPrefsActionTypes {
-  USER_PREFS_LOADED = "[UserPrefs] User Prefs Loaded"
+  USER_PREFS_LOADED = '[UserPrefs] User Prefs Loaded'
 }
 
 export class UserPrefsLoadedAction implements Action {

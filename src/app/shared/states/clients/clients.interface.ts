@@ -1,5 +1,5 @@
-import { EntityState } from "@ngrx/entity";
-import { IFund } from "../funds/funds.interface";
+import { EntityState } from '@ngrx/entity';
+import { IFund } from '../funds/funds.interface';
 
 export interface IClient {
   id: number;

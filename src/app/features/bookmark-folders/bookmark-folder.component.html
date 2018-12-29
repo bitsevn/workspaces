@@ -2,9 +2,7 @@
   <div *ngFor="let folder of (bookmarkFolders$ | async)" class="folder-holder">
     <ul class="list-group">
       <li class="list-group-item header">{{ folder.name }}</li>
-      <li *ngFor="let bookmark of folder.bookmarks" class="list-group-item">
-        {{ bookmark.name }}
-      </li>
+      <li *ngFor="let bookmark of folder.bookmarks" class="list-group-item">{{ bookmark.name }}</li>
     </ul>
   </div>
 </div>

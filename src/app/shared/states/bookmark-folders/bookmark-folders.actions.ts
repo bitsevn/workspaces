@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum BookmarkFoldersActionTypes {
-  BOOKMARK_FOLDERS_LOADED = "[BookmarkFolders] BookmarkFolders Loaded"
+  BOOKMARK_FOLDERS_LOADED = '[BookmarkFolders] BookmarkFolders Loaded'
 }
 
 export class BookmarkFoldersLoadedAction implements Action {

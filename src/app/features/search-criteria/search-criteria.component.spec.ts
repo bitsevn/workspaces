@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SearchCriteriaComponent } from "./search-criteria.component";
+import { SearchCriteriaComponent } from './search-criteria.component';
 
-describe("ClientComponent", () => {
+describe('ClientComponent', () => {
   let component: SearchCriteriaComponent;
   let fixture: ComponentFixture<SearchCriteriaComponent>;
 
@@ -18,7 +18,7 @@ describe("ClientComponent", () => {
     fixture.detectChanges();
   });
 
-  it("should create", () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 });

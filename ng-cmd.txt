@@ -17,6 +17,14 @@ ng g feature root-store/layouts-store/layouts --module root-store/layouts-store/
 # generate component
 ng g c features/layouts/layout --flat true --styleext=scss
 
+# install prettier npm
+npm install prettier --global
+
+# format enitire project code
+prettier --write "**/*.ts"
+prettier --write "**/*.html"
+prettier --write "**/*.scss"
+
 
 examples:
 ng g module root-store/user-prefs-store --flat false --module root-store/root-store.module.ts

@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum WorkspacesActionTypes {
-  WORKSPACES_LOADED = "[Workspaces] Workspaces Loaded"
+  WORKSPACES_LOADED = '[Workspaces] Workspaces Loaded'
 }
 
 export class WorkspacesLoadedAction implements Action {

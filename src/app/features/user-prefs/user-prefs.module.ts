@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { UserPrefComponent } from "./user-pref.component";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserPrefComponent } from './user-pref.component';
 
 @NgModule({
   declarations: [UserPrefComponent],

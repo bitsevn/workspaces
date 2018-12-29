@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { LayoutsActionTypes } from "./layouts.actions";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { LayoutsActionTypes } from './layouts.actions';
 
 @Injectable()
 export class LayoutsEffects {

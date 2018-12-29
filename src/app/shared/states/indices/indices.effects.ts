@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { IndicesActionTypes } from "./indices.actions";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { IndicesActionTypes } from './indices.actions';
 
 @Injectable()
 export class IndicesEffects {

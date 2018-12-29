@@ -1,0 +1,17 @@
+{
+  "window.zoomLevel": 0,
+  "gitlens.advanced.messages": {
+    "suppressShowKeyBindingsNotice": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.fontFamily": "Source Code Pro, Consolas, 'Courier New', monospace",
+  "editor.fontSize": 13,
+  "editor.fontWeight": "200",
+  "editor.fontLigatures": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "workbench.settings.editor": "json",
+  "files.autoSave": "afterDelay"
+}

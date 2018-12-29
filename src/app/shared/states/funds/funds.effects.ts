@@ -1,6 +1,6 @@
-import { Injectable } from "@angular/core";
-import { Actions, Effect, ofType } from "@ngrx/effects";
-import { FundsActionTypes } from "./funds.actions";
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { FundsActionTypes } from './funds.actions';
 
 @Injectable()
 export class FundsEffects {

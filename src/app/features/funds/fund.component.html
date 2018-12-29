@@ -1,3 +1,24 @@
-<p>
-  fund works!
-</p>
+<div class="btn-group" dropdown>
+  <button
+    id="funds_list"
+    dropdownToggle
+    type="button"
+    class="btn btn-secondary btn-sm btn-sub-nav dropdown-toggle"
+    aria-controls="dropdown-basic"
+  >
+    Select funds <span class="caret"></span>
+  </button>
+  <ul
+    id="dropdown-basic"
+    *dropdownMenu
+    class="dropdown-menu"
+    role="menu"
+    aria-labelledby="funds_list"
+  >
+    <li role="menuitem"><a class="dropdown-item">Action</a></li>
+    <li role="menuitem"><a class="dropdown-item">Another action</a></li>
+    <li role="menuitem"><a class="dropdown-item">Something else here</a></li>
+    <li class="divider dropdown-divider"></li>
+    <li role="menuitem"><a class="dropdown-item">Separated link</a></li>
+  </ul>
+</div>

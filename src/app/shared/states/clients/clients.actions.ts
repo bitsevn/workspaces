@@ -1,7 +1,7 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
 export enum ClientsActionTypes {
-  CLIENTS_LOADED = "[Clients] Clients Loaded"
+  CLIENTS_LOADED = '[Clients] Clients Loaded'
 }
 
 export class ClientsLoadedAction implements Action {

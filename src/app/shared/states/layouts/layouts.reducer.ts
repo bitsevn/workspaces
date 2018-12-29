@@ -1,20 +1,15 @@
-import { createEntityAdapter, EntityAdapter } from "@ngrx/entity";
-import {
-  LayoutsActions,
-  LayoutsActionTypes
-} from "../../../shared/states/layouts/layouts.actions";
-import { ILayoutsState, ILayout } from "./layouts.interface";
+import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { LayoutsActions, LayoutsActionTypes } from '../../../shared/states/layouts/layouts.actions';
+import { ILayoutsState, ILayout } from './layouts.interface';
 
-export const layoutsEntityAdapter: EntityAdapter<ILayout> = createEntityAdapter<
-  ILayout
->();
+export const layoutsEntityAdapter: EntityAdapter<ILayout> = createEntityAdapter<ILayout>();
 
 const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
   ids: [10, 11, 12],
   entities: {
     10: {
       id: 10,
-      name: "two-cols",
+      name: 'two-cols',
       sections: [
         {
           id: 1,
@@ -36,7 +31,7 @@ const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
     },
     11: {
       id: 11,
-      name: "three-cols",
+      name: 'three-cols',
       sections: [
         {
           id: 1,
@@ -66,7 +61,7 @@ const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
     },
     12: {
       id: 12,
-      name: "four-cols",
+      name: 'four-cols',
       sections: [
         {
           id: 1,
@@ -105,10 +100,7 @@ const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
   }
 });
 
-export function reducer(
-  state = initialState,
-  action: LayoutsActions
-): ILayoutsState {
+export function reducer(state = initialState, action: LayoutsActions): ILayoutsState {
   switch (action.type) {
     case LayoutsActionTypes.LAYOUTS_LOADED:
       return state;

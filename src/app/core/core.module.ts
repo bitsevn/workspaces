@@ -1,6 +1,6 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { RootStoreModule } from "./store";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RootStoreModule } from './store';
 
 @NgModule({
   declarations: [],
