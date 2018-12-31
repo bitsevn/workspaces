@@ -1,14 +1,29 @@
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { LayoutsActions, LayoutsActionTypes } from '../../../shared/states/layouts/layouts.actions';
-import { ILayoutsState, ILayout } from './layouts.interface';
+import { ILayout, ILayoutsState } from './layouts.interface';
 
 export const layoutsEntityAdapter: EntityAdapter<ILayout> = createEntityAdapter<ILayout>();
 
 const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
-  ids: [10, 11, 12],
+  ids: [0, 1, 2, 3],
   entities: {
-    10: {
-      id: 10,
+    0: {
+      id: 0,
+      name: 'one-col',
+      sections: [
+        {
+          id: 1,
+          order: 1,
+          rows: 1,
+          cols: 1,
+          x: 0,
+          y: 0
+        }
+      ]
+    },
+    1: {
+      id: 1,
       name: 'two-cols',
       sections: [
         {
@@ -29,8 +44,8 @@ const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
         }
       ]
     },
-    11: {
-      id: 11,
+    2: {
+      id: 2,
       name: 'three-cols',
       sections: [
         {
@@ -59,8 +74,8 @@ const initialState: ILayoutsState = layoutsEntityAdapter.getInitialState({
         }
       ]
     },
-    12: {
-      id: 12,
+    3: {
+      id: 3,
       name: 'four-cols',
       sections: [
         {
@@ -109,3 +124,23 @@ export function reducer(state = initialState, action: LayoutsActions): ILayoutsS
       return state;
   }
 }
+
+const { selectEntities } = layoutsEntityAdapter.getSelectors();
+
+export const getLayoutsState = createFeatureSelector('layouts');
+
+export const getAllEntities = createSelector(
+  getLayoutsState,
+  selectEntities
+);
+
+export const getLayoutById = (id: number) =>
+  createSelector(
+    getAllEntities,
+    entities => entities[id]
+  );
+
+export const getDefaultLayout = createSelector(
+  getAllEntities,
+  entities => entities[0]
+);

@@ -7,13 +7,16 @@ export enum WorkspaceType {
 }
 
 export interface IWorkspaceLayoutSection {
-  itemId: number | string;
+  id: number;
+  bookmarkId: number;
+  chartId: number;
   layoutSectionId: number;
 }
 
 export interface IWorkspace {
   id: number;
   name: string;
+  default: boolean;
   kind: WorkspaceType;
   layoutId: number;
   layoutSectionMappings: IWorkspaceLayoutSection[];

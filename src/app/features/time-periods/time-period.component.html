@@ -1,24 +1,18 @@
 <div class="btn-group" dropdown>
   <button
-    id="periods_list"
     dropdownToggle
     type="button"
     class="btn btn-secondary btn-sm btn-sub-nav dropdown-toggle"
     aria-controls="dropdown-basic"
+    [disabled]="searching$ | async"
   >
-    Select period <span class="caret"></span>
+    {{ (period$ | async) ? (period$ | async).name : 'Select period' }} <span class="caret"></span>
   </button>
-  <ul
-    id="dropdown-basic"
-    *dropdownMenu
-    class="dropdown-menu"
-    role="menu"
-    aria-labelledby="periods_list"
-  >
-    <li role="menuitem"><a class="dropdown-item">Action</a></li>
-    <li role="menuitem"><a class="dropdown-item">Another action</a></li>
-    <li role="menuitem"><a class="dropdown-item">Something else here</a></li>
-    <li class="divider dropdown-divider"></li>
-    <li role="menuitem"><a class="dropdown-item">Separated link</a></li>
+  <ul *dropdownMenu class="dropdown-menu" role="menu">
+    <li *ngFor="let period of (periods$ | async)" role="menuitem" (click)="onSelect(period.id)">
+      <a class="dropdown-item {{ (period$ | async).id == period.id ? 'active' : '' }}">{{
+        period.name
+      }}</a>
+    </li>
   </ul>
 </div>

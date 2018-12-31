@@ -1,1 +1,46 @@
-<p>search criteria works!</p>
+<nav class="sub-navbar">
+  <ul class="sub-navbar-nav">
+    <li class="sub-nav-item">
+      <a class="sub-nav-item-field">
+        <span>Workspace:</span>
+        <app-workspace></app-workspace>
+      </a>
+    </li>
+
+    <li class="sub-nav-item">
+      <a class="sub-nav-item-field">
+        <span>Clients:</span>
+        <app-client></app-client>
+      </a>
+    </li>
+    <li class="sub-nav-item">
+      <a class="sub-nav-item-field">
+        <span>Funds:</span>
+        <app-fund></app-fund>
+      </a>
+    </li>
+    <li class="sub-nav-item">
+      <a class="sub-nav-item-field">
+        <span>Index:</span>
+        <app-index></app-index>
+      </a>
+    </li>
+    <li class="sub-nav-item">
+      <a class="sub-nav-item-field">
+        <span>Time period:</span>
+        <app-time-period></app-time-period>
+      </a>
+    </li>
+    <li class="sub-nav-item">
+      <a class="sub-nav-item-field">
+        <button
+          class="btn btn-primary btn-sm btn-sub-nav"
+          (click)="onApply($event)"
+          [disabled]="searching$ | async"
+        >
+          {{ (searching$ | async) ? 'Searching..' : 'Apply' }}
+        </button>
+      </a>
+    </li>
+  </ul>
+</nav>

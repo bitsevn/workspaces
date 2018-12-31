@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IStore } from '../../shared/interfaces/store.interface';
-import { selectAllBookmarkFolders } from '../../shared/states/bookmark-folders/bookmark-folders.selector';
 import { Observable } from 'rxjs';
 import { IBookmarkFolder } from 'src/app/db';
+import { IBookmarkFoldersState } from 'src/app/shared/states/bookmark-folders/bookmark-folders.interface';
+import { selectAllBookmarkFolders } from '../../shared/states/bookmark-folders/bookmark-folders.selector';
 
 @Component({
   selector: 'app-bookmark-folder',
@@ -13,10 +13,9 @@ import { IBookmarkFolder } from 'src/app/db';
 export class BookmarkFolderComponent implements OnInit {
   bookmarkFolders$: Observable<IBookmarkFolder[]>;
 
-  constructor(private store: Store<IStore>) {}
+  constructor(private store: Store<IBookmarkFoldersState>) {}
 
   ngOnInit() {
     this.bookmarkFolders$ = this.store.select(selectAllBookmarkFolders);
-    this.bookmarkFolders$.subscribe(folders => console.log('folders', folders));
   }
 }

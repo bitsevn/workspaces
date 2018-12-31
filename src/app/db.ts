@@ -104,6 +104,17 @@ export interface ISearchCriteria {
   isSearching?: boolean;
 }
 
+export enum Mode {
+  VIEW = 0,
+  EDIT = 1,
+  DELETE = 2
+}
+
+export interface IDashboard {
+  sidebarOpen: boolean;
+  mode: Mode;
+}
+
 export interface IState {
   userPrefs: IUserPreference;
   layouts: ILayout[];

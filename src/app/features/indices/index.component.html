@@ -1,24 +1,18 @@
 <div class="btn-group" dropdown>
   <button
-    id="indices_list"
     dropdownToggle
     type="button"
     class="btn btn-secondary btn-sm btn-sub-nav dropdown-toggle"
     aria-controls="dropdown-basic"
+    [disabled]="searching$ | async"
   >
-    Select index <span class="caret"></span>
+    {{ (index$ | async) ? (index$ | async).name : 'Select index' }} <span class="caret"></span>
   </button>
-  <ul
-    id="dropdown-basic"
-    *dropdownMenu
-    class="dropdown-menu"
-    role="menu"
-    aria-labelledby="indices_list"
-  >
-    <li role="menuitem"><a class="dropdown-item">Action</a></li>
-    <li role="menuitem"><a class="dropdown-item">Another action</a></li>
-    <li role="menuitem"><a class="dropdown-item">Something else here</a></li>
-    <li class="divider dropdown-divider"></li>
-    <li role="menuitem"><a class="dropdown-item">Separated link</a></li>
+  <ul *dropdownMenu class="dropdown-menu" role="menu">
+    <li *ngFor="let index of (indices$ | async)" role="menuitem" (click)="onSelect(index.id)">
+      <a class="dropdown-item {{ (index$ | async).id == index.id ? 'active' : '' }}">{{
+        index.name
+      }}</a>
+    </li>
   </ul>
 </div>

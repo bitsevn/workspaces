@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { IStore } from 'src/app/shared/interfaces/store.interface';
 
 @Component({
   selector: 'app-navigation',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-  collapsed: boolean = true;
-  sidebarOpened: boolean = false;
+  collapsed = true;
+  sidebarOpened = false;
 
-  constructor() {}
+  constructor(private store: Store<IStore>) {}
 
   ngOnInit() {}
 
@@ -18,6 +20,7 @@ export class NavigationComponent implements OnInit {
     document.getElementById('main').style.marginLeft = '20%';
     document.getElementById('folder-container').style.display = 'block';
     this.sidebarOpened = !this.sidebarOpened;
+    this.notifyToggle();
   }
 
   closeNav() {
@@ -25,5 +28,10 @@ export class NavigationComponent implements OnInit {
     document.getElementById('main').style.marginLeft = '40px';
     document.getElementById('folder-container').style.display = 'none';
     this.sidebarOpened = !this.sidebarOpened;
+    this.notifyToggle();
+  }
+
+  notifyToggle() {
+    //this.store.dispatch()
   }
 }

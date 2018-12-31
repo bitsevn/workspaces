@@ -1,13 +1,21 @@
 import { Action } from '@ngrx/store';
 
 export enum SearchCriteriaActionTypes {
-  BOOKMARK_CHANGED = '[SearchCriteria] SearchCriterias Bookmark Changed',
-  INDEX_CHANGED = '[SearchCriteria] SearchCriterias Index Changed',
-  CLIENT_CHANGED = '[SearchCriteria] SearchCriterias Client Changed',
-  TIME_PERIOD_CHANGED = '[SearchCriteria] SearchCriterias Time Period Changed',
-  DATES_CHANGED = '[SearchCriteria] SearchCriterias Date Range Changed'
+  WORKSPACE_CHANGED = '[SearchCriteria] Workspace Changed',
+  BOOKMARK_CHANGED = '[SearchCriteria] Bookmark Changed',
+  INDEX_CHANGED = '[SearchCriteria] Index Changed',
+  CLIENT_CHANGED = '[SearchCriteria] Client Changed',
+  TIME_PERIOD_CHANGED = '[SearchCriteria] Time Period Changed',
+  DATES_CHANGED = '[SearchCriteria] Date Range Changed',
+  START_SEARCH = '[SearchCriteria] Start Search',
+  SEARCH_SUCCESS = '[SearchCriteria] Search Success',
+  SEARCH_FAIL = '[SearchCriteria] Search Fail'
 }
 
+export class WorkspaceChangedAction implements Action {
+  readonly type = SearchCriteriaActionTypes.WORKSPACE_CHANGED;
+  constructor(public workspaceId: number) {}
+}
 export class BookmarkChangedAction implements Action {
   readonly type = SearchCriteriaActionTypes.BOOKMARK_CHANGED;
   constructor(public bookmarkId: number) {}
@@ -33,9 +41,26 @@ export class DateRangeChangedAction implements Action {
   constructor(public startDate: number, public endDate: number) {}
 }
 
+export class StartSearchAction implements Action {
+  readonly type = SearchCriteriaActionTypes.START_SEARCH;
+}
+
+export class SearchSuccessAction implements Action {
+  readonly type = SearchCriteriaActionTypes.SEARCH_SUCCESS;
+  constructor(public payload: any) {}
+}
+
+export class SearchFailAction implements Action {
+  readonly type = SearchCriteriaActionTypes.SEARCH_FAIL;
+  constructor(public error: any) {}
+}
 export type SearchCriteriaActions =
+  | WorkspaceChangedAction
   | BookmarkChangedAction
   | IndexChangedAction
   | ClientChangedAction
   | TimePeriodChangedAction
-  | DateRangeChangedAction;
+  | DateRangeChangedAction
+  | StartSearchAction
+  | SearchSuccessAction
+  | SearchFailAction;

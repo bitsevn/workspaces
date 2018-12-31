@@ -1,5 +1,14 @@
 <app-navigation></app-navigation>
 <div class="presentation">
-  <div id="sidebar" class="sidebar"><app-bookmark-folder></app-bookmark-folder></div>
-  <div id="main" class="main"></div>
+  <app-sidebar></app-sidebar>
+  <div id="main" class="main">
+    <span *ngIf="(loading$ | async)">Loading...</span>
+    <div *ngIf="(loaded$ | async)" style="height: 300px;">
+      <gridster #outerGrid [options]="options">
+        <gridster-item *ngFor="let section of layout.sections" [item]="section">
+          section {{ section.id }}
+        </gridster-item>
+      </gridster>
+    </div>
+  </div>
 </div>

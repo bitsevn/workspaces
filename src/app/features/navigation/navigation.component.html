@@ -2,61 +2,10 @@
   <a class="navbar-brand" href="#">Workspaces</a>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <ul class="navbar-nav">
-      <li class="nav-item dropdown" (click)="collapsed = !collapsed">
-        <a
-          class="nav-link dropdown-toggle"
-          id="workspaces_dropdown"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Workpsaces
-        </a>
-        <div
-          class="dropdown-menu {{ collapsed ? '' : 'show' }}"
-          aria-labelledby="workspaces_dropdown"
-        >
-          <a class="dropdown-item">Default Workspace</a>
-          <a class="dropdown-item">Personal Workpsace</a>
-          <a class="dropdown-item">Client Workspace</a>
-        </div>
-      </li>
       <li class="nav-item" (click)="sidebarOpened ? closeNav() : openNav()">
         <a class="nav-link">Toggle sidebar</a>
       </li>
     </ul>
   </div>
 </nav>
-<div class="sub-navbar">
-  <ul class="sub-navbar-nav">
-    <li class="sub-nav-item">
-      <a class="sub-nav-item-field">
-        <span>Clients:</span>
-        <app-client-container></app-client-container>
-      </a>
-    </li>
-    <li class="sub-nav-item">
-      <a class="sub-nav-item-field">
-        <span>Funds:</span>
-        <app-fund></app-fund>
-      </a>
-    </li>
-    <li class="sub-nav-item">
-      <a class="sub-nav-item-field">
-        <span>Index:</span>
-        <app-index></app-index>
-      </a>
-    </li>
-    <li class="sub-nav-item">
-      <a class="sub-nav-item-field">
-        <span>Time period:</span>
-        <app-time-period></app-time-period>
-      </a>
-    </li>
-    <li class="sub-nav-item">
-      <a class="sub-nav-item-field">
-        <button class="btn btn-primary btn-sm btn-sub-nav">Apply</button>
-      </a>
-    </li>
-  </ul>
-</div>
+<app-search-criteria></app-search-criteria>

@@ -1,6 +1,7 @@
 import { createEntityAdapter, EntityAdapter } from '@ngrx/entity';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ClientsActions, ClientsActionTypes } from './clients.actions';
-import { IClientState, IClient } from './clients.interface';
+import { IClient, IClientState } from './clients.interface';
 
 export const clientsEntityAdapter: EntityAdapter<IClient> = createEntityAdapter<IClient>();
 
@@ -60,4 +61,28 @@ export function reducer(state = initialState, action: ClientsActions): IClientSt
   }
 }
 
-export const { selectAll } = clientsEntityAdapter.getSelectors();
+const { selectAll, selectEntities } = clientsEntityAdapter.getSelectors();
+
+export const getClientStateSelector = createFeatureSelector<IClientState>('clients');
+
+export const selectAllClients = createSelector(
+  getClientStateSelector,
+  selectAll
+);
+
+export const selectAllEntities = createSelector(
+  getClientStateSelector,
+  selectEntities
+);
+
+export const getClientById = (id: number) =>
+  createSelector(
+    selectAllEntities,
+    entities => entities[id]
+  );
+
+export const getClientFunds = (id: number) =>
+  createSelector(
+    getClientById(id),
+    client => client.funds
+  );

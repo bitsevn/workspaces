@@ -1,12 +1,11 @@
 import { EntityState } from '@ngrx/entity';
+import { GridsterItem } from 'angular-gridster2';
 
-export interface ILayoutSection {
+export interface ILayoutSection extends GridsterItem {
   id: number;
   order: number;
-  rows: number;
-  cols: number;
-  x: number;
-  y: number;
+  bookmarkId?: number;
+  chartId?: number;
 }
 
 export interface ILayout {

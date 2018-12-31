@@ -1,1 +1,23 @@
-<p>workspace works!</p>
+<div class="btn-group" dropdown>
+  <button
+    dropdownToggle
+    type="button"
+    class="btn btn-secondary btn-sm btn-sub-nav dropdown-toggle"
+    aria-controls="dropdown-basic"
+    [disabled]="searching$ | async"
+  >
+    {{ (workspace$ | async) ? (workspace$ | async).name : 'Select workspace' }}
+    <span class="caret"></span>
+  </button>
+  <ul *dropdownMenu class="dropdown-menu" role="menu">
+    <li
+      *ngFor="let workspace of (workspaces$ | async)"
+      role="menuitem"
+      (click)="onSelect(workspace.id)"
+    >
+      <a class="dropdown-item {{ (workspace$ | async).id == workspace.id ? 'active' : '' }}">{{
+        workspace.name
+      }}</a>
+    </li>
+  </ul>
+</div>

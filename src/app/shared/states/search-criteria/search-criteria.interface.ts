@@ -1,5 +1,6 @@
 export interface ISearchCriteria {
   userId?: string;
+  workspaceId: number;
   clientId?: number;
   bookmarkId?: number;
   indexId?: number | string;
@@ -7,7 +8,9 @@ export interface ISearchCriteria {
   timePeriod?: number | string;
   startDate?: number; // YYYYMMDD
   endDate?: number; // YYYYMMDD
-  isSearching?: boolean;
+  error?: any;
 }
 
-export interface ISearchCriteriaState extends ISearchCriteria {}
+export interface ISearchCriteriaState extends ISearchCriteria {
+  searching?: boolean;
+}

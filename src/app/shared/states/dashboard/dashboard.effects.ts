@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { ClientsActionTypes } from './clients.actions';
+import { DashboardActionTypes } from './dashboard.action';
 
 @Injectable()
-export class ClientsEffects {
+export class DashboardEffects {
   @Effect()
-  loadClients$ = this.actions$.pipe(ofType(ClientsActionTypes.CLIENTS_LOADED));
+  loadWorkspace$ = this.actions$.pipe(ofType(DashboardActionTypes.LOAD_WORKSPACE));
 
   constructor(private actions$: Actions) {}
 }

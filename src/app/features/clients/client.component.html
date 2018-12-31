@@ -4,12 +4,15 @@
     type="button"
     class="btn btn-secondary btn-sm btn-sub-nav dropdown-toggle"
     aria-controls="dropdown-basic"
+    [disabled]="searching$ | async"
   >
-    Select client <span class="caret"></span>
+    {{ (client$ | async) ? (client$ | async).name : 'Select client' }} <span class="caret"></span>
   </button>
   <ul *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="clients_list">
-    <li *ngFor="let client of clients" role="menuitem">
-      <a class="dropdown-item">{{ client.name }}</a>
+    <li *ngFor="let client of (clients$ | async)" role="menuitem" (click)="onSelect(client.id)">
+      <a class="dropdown-item {{ (client$ | async).id == client.id ? 'active' : '' }}">{{
+        client.name
+      }}</a>
     </li>
   </ul>
 </div>
