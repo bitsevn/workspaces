@@ -1,10 +1,13 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { SearchCriteriaActions, SearchCriteriaActionTypes } from './search-criteria.actions';
-import { ISearchCriteriaState } from './search-criteria.interface';
+import { ActionType, ISearchCriteriaState } from './search-criteria.interface';
 
 export const initialState: ISearchCriteriaState = {
   userId: 'arunku@ms.com',
   workspaceId: 100,
+  bookmarkId: null,
+  chartId: null,
+  actionType: ActionType.VIEW,
   clientId: 100,
   indexId: 1,
   timePeriod: 'YTD',
@@ -16,14 +19,19 @@ export function reducer(state = initialState, action: SearchCriteriaActions): IS
     case SearchCriteriaActionTypes.WORKSPACE_CHANGED: {
       return {
         ...state,
-        workspaceId: action.workspaceId
+        workspaceId: action.workspaceId,
+        bookmarkId: null,
+        chartId: null,
+        actionType: ActionType.VIEW
       };
     }
 
     case SearchCriteriaActionTypes.BOOKMARK_CHANGED: {
       return {
         ...state,
-        bookmarkId: action.bookmarkId
+        workspaceId: null,
+        bookmarkId: action.bookmarkId,
+        actionType: action.actionType ? action.actionType : ActionType.VIEW
       };
     }
 
@@ -102,6 +110,18 @@ export const getIndexId = createSelector(
 export const getTimePeriodId = createSelector(
   getSearchCriteriaState,
   state => state.timePeriod
+);
+export const getBoomarkId = createSelector(
+  getSearchCriteriaState,
+  state => state.bookmarkId
+);
+export const getChartId = createSelector(
+  getSearchCriteriaState,
+  state => state.chartId
+);
+export const getActionType = createSelector(
+  getSearchCriteriaState,
+  state => state.actionType
 );
 export const getSearching = createSelector(
   getSearchCriteriaState,

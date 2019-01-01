@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { ActionType } from './search-criteria.interface';
 
 export enum SearchCriteriaActionTypes {
   WORKSPACE_CHANGED = '[SearchCriteria] Workspace Changed',
@@ -18,7 +19,7 @@ export class WorkspaceChangedAction implements Action {
 }
 export class BookmarkChangedAction implements Action {
   readonly type = SearchCriteriaActionTypes.BOOKMARK_CHANGED;
-  constructor(public bookmarkId: number) {}
+  constructor(public bookmarkId: number, public actionType?: ActionType) {}
 }
 
 export class IndexChangedAction implements Action {

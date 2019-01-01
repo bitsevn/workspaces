@@ -14,6 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    this.store.select(state => state).subscribe(state => console.log('app state', state));
+    //this.store.select(state => state).subscribe(state => console.log('app state', state));
   }
 }

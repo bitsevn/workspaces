@@ -88,3 +88,8 @@ export const getWorkspaceById = (id: number) =>
     getWorkspaceEntities,
     entities => entities[id]
   );
+
+export const getDefaultWorkspace = createSelector(
+  getWorkspaceEntities,
+  entities => Object.values(entities).find(entity => entity.default)
+);

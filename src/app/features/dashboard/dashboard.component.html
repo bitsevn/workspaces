@@ -3,8 +3,8 @@
   <app-sidebar></app-sidebar>
   <div id="main" class="main">
     <span *ngIf="(loading$ | async)">Loading...</span>
-    <div *ngIf="(loaded$ | async)" style="height: 300px;">
-      <gridster #outerGrid [options]="options">
+    <div *ngIf="(loaded$ | async)" style="height: 200px;">
+      <gridster #layoutGrid [options]="options">
         <gridster-item *ngFor="let section of layout.sections" [item]="section">
           section {{ section.id }}
         </gridster-item>
