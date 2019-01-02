@@ -5,7 +5,7 @@ import { DashboardActionTypes } from './dashboard.action';
 @Injectable()
 export class DashboardEffects {
   @Effect()
-  loadWorkspace$ = this.actions$.pipe(ofType(DashboardActionTypes.LOAD_WORKSPACE));
+  loadWorkspace$ = this.actions$.pipe(ofType(DashboardActionTypes.LOAD_DASHBOARD));
 
   constructor(private actions$: Actions) {}
 }

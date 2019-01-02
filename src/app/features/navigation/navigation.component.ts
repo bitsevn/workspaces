@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IStore } from 'src/app/shared/interfaces/store.interface';
+import * as fromDashboardActions from 'src/app/shared/states/dashboard/dashboard.action';
 
 @Component({
   selector: 'app-navigation',
@@ -32,6 +33,6 @@ export class NavigationComponent implements OnInit {
   }
 
   notifyToggle() {
-    //this.store.dispatch()
+    this.store.dispatch(new fromDashboardActions.SideBarToggledAction());
   }
 }

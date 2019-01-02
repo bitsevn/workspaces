@@ -1,0 +1,6 @@
+<span *ngIf="loading">Loading..</span>
+<gridster *ngIf="!loading" #layoutGrid [options]="options">
+  <gridster-item *ngFor="let section of layout.sections" [item]="section">
+    <app-bookmarks title="section {{ section.id }}"></app-bookmarks>
+  </gridster-item>
+</gridster>

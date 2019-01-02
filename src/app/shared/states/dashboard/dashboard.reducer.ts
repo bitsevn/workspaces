@@ -4,7 +4,8 @@ import { IDashboardState } from './dashboard.interface';
 
 const initialState: IDashboardState = {
   loading: true,
-  loaded: false
+  loaded: false,
+  sideBarOpened: false
 };
 
 export function reducer(state = initialState, action: DashboardActions): IDashboardState {
@@ -25,6 +26,13 @@ export function reducer(state = initialState, action: DashboardActions): IDashbo
       };
     }
 
+    case DashboardActionTypes.SIDE_BAR_TOGGLED: {
+      return {
+        ...state,
+        sideBarOpened: !state.sideBarOpened
+      };
+    }
+
     default:
       return state;
   }
@@ -40,4 +48,9 @@ export const getLoading = createSelector(
 export const getLoaded = createSelector(
   getDashboardState,
   state => state.loaded
+);
+
+export const getSideBarToggle = createSelector(
+  getDashboardState,
+  state => state.sideBarOpened
 );

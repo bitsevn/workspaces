@@ -2,13 +2,18 @@
 <div class="presentation">
   <app-sidebar></app-sidebar>
   <div id="main" class="main">
-    <span *ngIf="(loading$ | async)">Loading...</span>
-    <div *ngIf="(loaded$ | async)" style="height: 200px;">
-      <gridster #layoutGrid [options]="options">
-        <gridster-item *ngFor="let section of layout.sections" [item]="section">
-          section {{ section.id }}
-        </gridster-item>
-      </gridster>
+    <div style="height: 200px;">
+      <app-workspace2
+        *ngIf="(workspaceContext$ | async) && (workspaceContext$ | async).workspaceId"
+        [workspaceId]="(workspaceContext$ | async).workspaceId"
+        [actionType]="(workspaceContext$ | async).actionType"
+      ></app-workspace2>
+      <app-bookmarks
+        *ngIf="(bookmarkContext$ | async) && (bookmarkContext$ | async).bookmarkId"
+        [bookmarkId]="(bookmarkContext$ | async).bookmarkId"
+        [chartId]="(bookmarkContext$ | async).chartId"
+        [actionType]="(bookmarkContext$ | async).actionType"
+      ></app-bookmarks>
     </div>
   </div>
 </div>
