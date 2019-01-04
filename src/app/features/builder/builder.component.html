@@ -1,0 +1,28 @@
+<div class="builder-container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark builder-item">
+    <a class="navbar-brand" href="#">Layout Builder</a>
+  </nav>
+  <nav class="builder-toolbar builder-item">
+    <button class="btn btn-info btn-sm" title="Add" (click)="addItem()">
+      <i class="fa fa-plus"></i>
+    </button>
+    <button class="btn btn-info btn-sm" title="Log metadata" (click)="logMetadata()">
+      Log metadata
+    </button>
+    <span>
+      <input type="checkbox" (click)="updateGridType('scrollVertical')" />
+      <span class="smaller">Allow Vertical Scroll</span>
+    </span>
+  </nav>
+  <section class="builder-body builder-item">
+    <gridster [options]="options">
+      <gridster-item [item]="item" *ngFor="let item of dashboard">
+        <div class="builder-grid-item">
+          <button class="btn btn-info btn-sm" title="Remove" (click)="removeItem($event, item)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </div>
+      </gridster-item>
+    </gridster>
+  </section>
+</div>

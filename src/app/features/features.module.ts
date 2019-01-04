@@ -11,6 +11,7 @@ import { SearchCriteriaModule } from './search-criteria/search-criteria.module';
 import { TimePeriodsModule } from './time-periods/time-periods.module';
 import { UserPrefsModule } from './user-prefs/user-prefs.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
+import { BuilderModule } from './builder/builder.module';
 
 const featuresModules = [
   BookmarkFoldersModule,
@@ -28,7 +29,7 @@ const featuresModules = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ...featuresModules],
+  imports: [CommonModule, ...featuresModules, BuilderModule],
   exports: [...featuresModules]
 })
 export class FeaturesModule {}

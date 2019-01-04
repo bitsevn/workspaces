@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { BuilderComponent } from './features/builder/builder.component';
 import { CustomRouterStateSerializer } from './shared/root.reducer';
-import { DashboardComponent } from './features/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: '', pathMatch: 'full', redirectTo: 'builder' },
+  { path: 'builder', component: BuilderComponent }
 ];
 
 @NgModule({
