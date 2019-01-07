@@ -1,49 +1,12 @@
-Main Content ->
+container:
+height: 262, width: 1346
 
-const main = {
-  workspace: any;
-  bookmark: any;
-  chart: any;
+
+x (left) = 10,
+y (top) = 10
+width = 10
+height = 10
+
+calcPixels(percentage, total) {
+  return total * percentage / 100;
 }
-
-Workspace (Layouts) -> Modes (VIEW)
-Bookmark | Chart -> Modes (VIEW, EDIT)
-
-<presenter>
-  <renderer>
-    <workspace-renderer>
-      <layout [layout]="layout"></layout>
-    </workspace-renderer>
-    <bookmark-renderer></bookmark-renderer>
-    <chart-renderer></chart-renderer>
-  </renderer>
-</presenter>
-
-<layout [layout]="layout">
-  <layout-section [layoutSection]="layoutSection">
-    <bookmark-panel [bookmarkId]="bookmarkId" [chartId]="chartId" [mode]="mode">
-      <bookmark-panel-header>
-        <bookmark-panel-title></bookmark-panel-title>
-        <bookmark-panel-nav>
-          <bookmark-panel-nav-left></bookmark-panel-nav-left>
-          <bookmark-panel-nav-right></bookmark-panel-nav-right>
-        </bookmark-panelp-nav>
-      </bookmark-panel-header>
-      <bookmark-panel-body>
-        <bookmark-grid></bookmark-grid>
-        <bookmark-chart></bookmark-chart>
-      </bookmark-panel-body>
-    </bookmark-panel>
-  </layout-section>
-</layout>
-
-const layout = {
-  id: 10,
-  sectionMappings: [
-    { sectionId: 1, bookmarkId: 1243, chartId: 452, itemType: CHART },
-    { sectionId: 2, bookmarkId: 1463, chartId: null, itemType: BOOKMARK }
-  ]
-}
-
-
-

@@ -1,0 +1,36 @@
+<div id="outerContainer">
+  <!-- <div id="container">
+    <div class="item one"></div>
+    <div class="item two"></div>
+    <div class="item three"></div>
+    <div class="item four"></div>
+  </div> -->
+  <!-- <div id="container">
+    <div class="widget">
+      <div class="widget-header">Widget 1</div>
+      <p>Move</p>
+      <p>me</p>
+    </div>
+    <div class="widget">
+      <div class="widget-header">Widget 2</div>
+      <p>Move</p>
+      <p>me</p>
+    </div>
+  </div> -->
+  <div id="container">
+    <div
+      class="widget"
+      draggable="true"
+      *ngFor="let widget of widgets; let i = index"
+      id="{{ 'widget-' + widget.widgetId }}"
+      [style.top]="widget.y + '%'"
+      [style.left]="widget.x + '%'"
+      [style.width]="widget.width + '%'"
+      [style.height]="widget.height + '%'"
+    >
+      <div class="widget-header">{{ widget.widgetName }}</div>
+      <p>Move</p>
+      <p>me</p>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,7 @@ import {
 export class BuilderComponent implements OnInit {
   options: GridsterConfig;
   dashboard: Array<GridsterItem>;
+  showPositions = true;
 
   constructor() {}
 
