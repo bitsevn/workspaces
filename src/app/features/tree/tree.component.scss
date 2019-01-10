@@ -1,0 +1,48 @@
+/* Remove default bullets */
+ul.tree-root,
+ul.tree-nested {
+  list-style-type: none;
+}
+
+/* Remove margins and padding from the parent ul */
+ul.tree-root {
+  margin: 0;
+  padding: 0;
+}
+
+ul.tree-root li .tree-nested {
+  padding: 0;
+  padding-left: 14px;
+}
+
+/* Hide the nested list */
+.tree-nested {
+  display: none;
+}
+
+/* Show the nested list when the user clicks on the caret/arrow (with JavaScript) */
+.tree-active {
+  display: block;
+}
+
+.tree-branch,
+.tree-leaf {
+  display: inline-block;
+}
+
+.tree-highlight {
+  color: red;
+}
+
+.folder-caret,
+.folder-caret-down {
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.folder-caret-down {
+  transform: rotate(90deg);
+}

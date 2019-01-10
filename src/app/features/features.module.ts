@@ -13,6 +13,7 @@ import { UserPrefsModule } from './user-prefs/user-prefs.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 import { BuilderModule } from './builder/builder.module';
 import { PositionsModule } from './positions/positions.module';
+import { TreeModule } from './tree/tree.module';
 
 const featuresModules = [
   BookmarkFoldersModule,
@@ -30,7 +31,7 @@ const featuresModules = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, ...featuresModules, BuilderModule, PositionsModule],
+  imports: [CommonModule, ...featuresModules, BuilderModule, PositionsModule, TreeModule],
   exports: [...featuresModules]
 })
 export class FeaturesModule {}

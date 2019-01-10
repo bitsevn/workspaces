@@ -1,0 +1,44 @@
+<ul class="{{ rootNodeClass }}">
+  <li *ngFor="let node of nodes">
+    <div *ngIf="node.nodeType == leafNodeType" class="tree-leaf">{{ node.name }}</div>
+    <i *ngIf="node.nodeType == branchNodeType" class="fa fa-caret-right folder-caret"></i>
+    <div *ngIf="node.nodeType == branchNodeType" class="tree-branch">{{ node.name }}</div>
+    <app-tree
+      *ngIf="node.nodeType == branchNodeType && node.children?.length > 0"
+      [rootNodeClass]="nestedRootNodeClass"
+      [nestedRootNodeClass]="nestedRootNodeClass"
+      [nodes]="node.children"
+    ></app-tree>
+  </li>
+</ul>
+
+<!-- <ul class="tree-root">
+    <li><div class="tree-leaf">Leaf Tea</div></li>
+    <li><div class="tree-leaf">Leaf Tea</div></li>
+    <li>
+      <i class="fa fa-caret-right folder-caret"></i>
+      <div class="tree-branch">Beverages</div>
+      <ul class="tree-nested">
+        <li><div class="tree-leaf">Water</div></li>
+        <li><div class="tree-leaf">Coffee</div></li>
+        <li>
+          <i class="fa fa-caret-right folder-caret"></i>
+          <div class="tree-branch">Tea</div>
+          <ul class="tree-nested">
+            <li><div class="tree-leaf">Black Tea</div></li>
+            <li><div class="tree-leaf">White Tea</div></li>
+            <li>
+              <i class="fa fa-caret-right folder-caret"></i>
+              <div class="tree-branch">Green Tea</div>
+              <ul class="tree-nested">
+                <li><div class="tree-leaf">Sencha</div></li>
+                <li><div class="tree-leaf">Gyokuro</div></li>
+                <li><div class="tree-leaf">Matcha</div></li>
+                <li><div class="tree-leaf">Pi Lo Chun</div></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul> -->

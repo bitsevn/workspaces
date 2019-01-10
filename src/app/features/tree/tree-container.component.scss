@@ -1,0 +1,13 @@
+.my-container {
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.my-body {
+  margin: 8px 10px;
+  padding: 8px;
+  flex: 1;
+  border: 1px #cccccc solid;
+}
