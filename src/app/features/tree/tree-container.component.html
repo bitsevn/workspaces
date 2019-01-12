@@ -3,5 +3,14 @@
     <a class="navbar-brand" href="#">Tree</a>
   </nav>
 
-  <section class="my-body"><app-tree [nodes]="nodes"></app-tree></section>
+  <nav>
+    <input
+      type="text"
+      placeholder="Type here to search"
+      [(ngModel)]="term"
+      (keyup)="filterTree(term)"
+    />
+  </nav>
+
+  <section class="my-body"><app-tree [nodes]="filteredNodes"></app-tree></section>
 </div>

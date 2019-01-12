@@ -13,6 +13,8 @@ export interface TreeNode<T> {
   id: number | string;
   name: string;
   nodeType: NodeType;
+  visible?: boolean;
+  expanded?: boolean;
   value?: T;
   children?: TreeNode<T>[];
 }
@@ -25,27 +27,46 @@ export interface TreeNode<T> {
 export class TreeComponent implements OnInit {
   @Input() rootNodeClass = 'tree-root';
   @Input() nestedRootNodeClass = 'tree-nested';
+  @Input() nodes: TreeNode<Item>[] = [];
+  @Input() rootNode: TreeNode<Item>;
+
   branchNodeType = NodeType.BRANCH;
   leafNodeType = NodeType.LEAF;
-  @Input() nodes: TreeNode<Item>[] = [];
+
   constructor() {}
 
   ngOnInit() {
-    const toggler = document.getElementsByClassName('folder-caret');
+    /* const toggler = document.getElementsByClassName('folder-caret');
     let i;
 
     for (i = 0; i < toggler.length; i++) {
       toggler[i].addEventListener('click', function() {
-        console.log(this);
-        this.parentElement.querySelector('.tree-nested').classList.toggle('tree-active');
+        this.parentElement.querySelector('app-tree > .tree-nested').classList.toggle('tree-active');
         this.classList.toggle('folder-caret-down');
       });
       toggler[i].addEventListener('mousedown', function() {
-        this.parentElement.querySelector('.tree-branch').classList.toggle('tree-highlight');
+        this.parentElement
+          .querySelector('app-tree > .tree-branch')
+          .classList.toggle('tree-highlight');
       });
       toggler[i].addEventListener('mouseup', function() {
-        this.parentElement.querySelector('.tree-branch').classList.toggle('tree-highlight');
+        this.parentElement
+          .querySelector('app-tree > .tree-branch')
+          .classList.toggle('tree-highlight');
       });
-    }
+    } */
+  }
+
+  toggle(event) {
+    const caret = event.target;
+    caret.classList.toggle('folder-caret-down');
+    const nestedTree = caret.parentElement.querySelector('app-tree .tree-nested');
+    if (nestedTree) nestedTree.classList.toggle('tree-active');
+  }
+
+  toggleHighlight(event) {
+    const caret = event.target;
+    const branch = caret.parentElement.querySelector('app-tree .tree-branch');
+    branch.classList.toggle('tree-highlight');
   }
 }

@@ -1,13 +1,20 @@
-<ul class="{{ rootNodeClass }}">
+<ul class="{{ rootNode && rootNode.expanded ? rootNodeClass + ' tree-active' : rootNodeClass }} ">
   <li *ngFor="let node of nodes">
     <div *ngIf="node.nodeType == leafNodeType" class="tree-leaf">{{ node.name }}</div>
-    <i *ngIf="node.nodeType == branchNodeType" class="fa fa-caret-right folder-caret"></i>
+    <i
+      *ngIf="node.nodeType == branchNodeType"
+      class="fa fa-caret-right folder-caret {{ node.expanded ? 'folder-caret-down' : '' }}"
+      (click)="toggle($event)"
+      (mousedown)="toggleHighlight($event)"
+      (mouseup)="toggleHighlight($event)"
+    ></i>
     <div *ngIf="node.nodeType == branchNodeType" class="tree-branch">{{ node.name }}</div>
     <app-tree
       *ngIf="node.nodeType == branchNodeType && node.children?.length > 0"
       [rootNodeClass]="nestedRootNodeClass"
       [nestedRootNodeClass]="nestedRootNodeClass"
       [nodes]="node.children"
+      [rootNode]="node"
     ></app-tree>
   </li>
 </ul>
