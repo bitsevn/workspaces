@@ -1,0 +1,167 @@
+package in.cubestack.tree;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TreeDemo {
+
+	public static void main(String[] args) {
+		List<Workspace> workspaces = new ArrayList<>();
+		workspaces.add(new Workspace(1, "Neelgiri Tea", ""));
+		workspaces.add(new Workspace(1, "Assam Tea", ""));
+		workspaces.add(new Workspace(1, "Water", "Beverages"));
+		workspaces.add(new Workspace(1, "Coffee", "Beverages"));
+		workspaces.add(new Workspace(1, "Black Tea", "Beverages/Tea"));
+		workspaces.add(new Workspace(1, "White Tea", "Beverages/Tea"));
+		workspaces.add(new Workspace(1, "Sencha", "Beverages/Tea/Green Tea"));
+		workspaces.add(new Workspace(1, "Gyokuro", "Beverages/Tea/Green Tea"));
+		workspaces.add(new Workspace(1, "Matcha", "Beverages/Tea/Green Tea"));
+		workspaces.add(new Workspace(1, "Pi Lo Chun", "Beverages/Tea/Green Tea"));
+
+		// This is working model
+
+		Node<Workspace> root = new Node<>("".hashCode(), "");
+		for(Workspace workspace: workspaces) {
+			String folders[] = workspace.folder.split("/");
+			Node<Workspace> targetNode = root;
+			String parentFolder = null;
+			for(String folder: folders) {
+				if(parentFolder == null) {
+					targetNode = findParentNode(folder.hashCode(), root);
+				} else {
+					targetNode = findParentNode(parentFolder.hashCode(), root);
+				}
+				if(targetNode == null) {
+					targetNode = new Node<> (folder.hashCode(), folder);
+					root.children.add(targetNode);
+				}
+
+				parentFolder = folder;
+			}
+
+			if(targetNode.id == parentFolder.hashCode()) {
+				targetNode.children.add(new Node<>(workspace.id, workspace.name));
+			} else {
+				Node<Workspace> node = findParentNode(parentFolder.hashCode(), targetNode);
+				if(node != null) {
+					node.children.add(new Node<>(workspace.id, workspace.name));
+				} else {
+					Node<Workspace> w = new Node<>(parentFolder.hashCode(), parentFolder);
+					w.children.add(new Node<>(workspace.id, workspace.name));
+					targetNode.children.add(w);
+				}
+			}
+
+
+		}
+		System.out.println(root);
+	}
+
+
+
+	private static Node<Workspace> convertIntoTree(List<Workspace> workspaces) {
+		Node<Workspace> root = null;
+		for(Workspace workspace: workspaces) {
+			String folders[] = workspace.folder.split("/");
+			Node<Workspace> targetNode = null;
+			for(String folder: folders) {
+				if(root == null) {
+					root = new Node<>(folder.hashCode(), folder);
+					root.children.add(new Node<> (workspace.id, workspace.name));
+				} else {
+					targetNode = findParentNode(folder.hashCode(), root);
+					if(targetNode == null) {
+						targetNode = new Node<> (folder.hashCode(), folder);
+						//n.children.add(new Node<> (workspace.id, workspace.name));
+						root.children.add(targetNode);
+					}
+				}
+			}
+			if(targetNode != null) {
+				targetNode.children.add(new Node<> (workspace.id, workspace.name));
+			}
+		}
+		return root;
+	}
+
+
+
+	private static Node<Workspace> findParentNode(int nodeId, Node<Workspace> root) {
+		if(root == null) return null;
+		if(root.id == nodeId) return root;
+		if(root.children == null) return null;
+		Node<Workspace> target = null;
+		for(Node<Workspace> node: root.children) {
+			target = findParentNode(nodeId, node);
+			if(target != null) return target;
+		}
+		return null;
+	}
+
+	static class Workspace {
+		int id;
+		String name;
+		String folder;
+		public Workspace(int id, String name, String folder) {
+			super();
+			this.id = id;
+			this.name = name;
+			this.folder = folder;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("{ id: %s, name: %s }", id, name);
+		}
+
+	}
+
+	static class Node<T> {
+		int id;
+		String name;
+		List<Node<T>> children = new ArrayList<>();
+
+		public Node() {}
+
+		public Node(int id, String name) {
+			super();
+			this.id = id;
+			this.name = name;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((name == null) ? 0 : name.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Node other = (Node) obj;
+			if (name == null) {
+				if (other.name != null)
+					return false;
+			} else if (!name.equals(other.name))
+				return false;
+			return true;
+		}
+
+
+
+		@Override
+		public String toString() {
+			return String.format("{ id: %s, name: %s, children: %s }", id, name, children);
+		}
+
+
+	}
+
+}
